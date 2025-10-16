@@ -55,9 +55,18 @@ const services = [
   }
 ];
 
+interface Service {
+  id: number;
+  title: string;
+  description: string;
+  icon: React.ReactElement;
+  basePrice: number;
+  features: string[];
+}
+
 export default function ServicesSection() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-  const [selectedService, setSelectedService] = useState<any>(null);
+  const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
   const [timeline, setTimeline] = useState<string>('standard');
   const [showOrderForm, setShowOrderForm] = useState(false);
@@ -93,7 +102,7 @@ export default function ServicesSection() {
     );
   };
 
-  const openCalculator = (service: any) => {
+  const openCalculator = (service: Service) => {
     setSelectedService(service);
     setSelectedFeatures([]);
     setTimeline('standard');

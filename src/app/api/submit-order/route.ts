@@ -8,11 +8,16 @@ export async function POST(request: NextRequest) {
     const orderId = Date.now();
 
     // Формирование списка функций
+    interface Feature {
+      name: string;
+      price: number;
+    }
+    
     let featuresText = '';
     if (data.additionalFeatures && data.additionalFeatures.length > 0) {
       featuresText = data.additionalFeatures
-        .filter((f: any) => f && f.name)
-        .map((f: any) => `  • ${f.name} — ${f.price.toLocaleString('ru-RU')} ₽`)
+        .filter((f: Feature) => f && f.name)
+        .map((f: Feature) => `  • ${f.name} — ${f.price.toLocaleString('ru-RU')} ₽`)
         .join('\n');
     }
 
@@ -80,10 +85,11 @@ ${featuresText ? `🎯 <b>Дополнительные функции</b>\n${fea
       message: 'Заявка успешно отправлена!' 
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Error processing order:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Ошибка при обработке заявки';
     return NextResponse.json(
-      { success: false, error: error.message || 'Ошибка при обработке заявки' },
+      { success: false, error: errorMessage },
       { status: 500 }
     );
   }

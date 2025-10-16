@@ -1,27 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { Menu, Bell, ShoppingCart, MessageCircle, Settings, CreditCard, User, Search, ChevronRight, Check, X, Star, Heart, Download, Home, Compass, Plus, Mail, Image, ArrowDown, ToggleLeft, ToggleRight, Trash2, Archive, Share2, Wifi, WifiOff, Volume2, VolumeX, RefreshCw, ChevronDown, Zap, Battery } from 'lucide-react';
+import { Bell, Settings, User, Check, Star, Heart, Download, Home, Compass, Plus, Mail, Image, Trash2, Archive, Share2, Wifi, WifiOff, Volume2, VolumeX, RefreshCw, ChevronDown, Zap } from 'lucide-react';
 
 export default function AnimationShowcase() {
-  const [activeCard, setActiveCard] = useState<number | null>(null);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [notificationRead, setNotificationRead] = useState(false);
-  const [cartItems, setCartItems] = useState(3);
-  const [liked, setLiked] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
-  const [toggleOn, setToggleOn] = useState(false);
+  const [activeCard, setActiveCard] = useState<number | null>(null);
   const [expandedAccordion, setExpandedAccordion] = useState<number | null>(null);
   const [swipeOffset, setSwipeOffset] = useState(0);
   const [showToast, setShowToast] = useState(false);
   const [pullToRefresh, setPullToRefresh] = useState(0);
   const [wifiOn, setWifiOn] = useState(true);
   const [soundOn, setSoundOn] = useState(true);
-  const [searchFocused, setSearchFocused] = useState(false);
-  const [rating, setRating] = useState<number | null>(null);
-  const [paymentExpanded, setPaymentExpanded] = useState(false);
-  const [fabOpen, setFabOpen] = useState(false);
-  const [selectedChip, setSelectedChip] = useState<number | null>(null);
 
   return (
     <section id="animations" className="py-20 px-4 bg-black relative overflow-hidden">
